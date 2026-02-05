@@ -1,0 +1,72 @@
+@font-face {
+  font-family: CursorGothic;
+  src: url("../../assets/fonts/CursorGothic-Regular.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: CursorGothic;
+  src: url("../../assets/fonts/CursorGothic-Bold.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 700;
+  font-style: normal;
+}
+
+:root {
+  --color-bg: #13120a;
+  --color-text: #ffffff;
+  --color-text-muted: #a3a3a3;
+  --color-border: hsl(45, 17%, 11.5%);
+  --color-btn-border: color-mix(in oklab, #edecec 20%, transparent);
+  --color-surface-1: #1a1912;
+  --color-surface-2: #211f18;
+  --font-cursor:
+    CursorGothic, "CursorGothic Fallback", system-ui, "Helvetica Neue",
+    Helvetica, Arial, sans-serif;
+  --transition: 0.2s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+  font-family: inherit;
+  width: fit-content;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-cursor);
+  font-weight: 100;
+  padding-top: 1rem;
+}
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 68px;
+}
+ul li :hover {
+  cursor: pointer;
+  filter: brightness(0.75);
+}
+.cta {
+  cursor: pointer;
+  display: flex;
+  color: #f54e00;
+  width: fit-content;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.cta:hover {
+  filter: brightness(0.8);
+}

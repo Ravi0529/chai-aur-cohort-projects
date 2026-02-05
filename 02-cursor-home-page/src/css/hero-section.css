@@ -1,0 +1,30 @@
+.hero-section {
+  margin-top: 8.75rem;
+  max-width: 81.25rem;
+  display: flex;
+  gap: 4rem;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero-section .content-wrapper {
+  display: flex;
+  gap: 1.5rem;
+  flex-direction: column;
+}
+
+h1 {
+  font-size: 1.625rem;
+  font-weight: 100;
+}
+
+.hero-section-image {
+  width: 100%;
+  border-radius: 0.25rem;
+}
+
+.hero-section .download-icon {
+  transform: translateY(0.0625rem);
+  width: 0.875rem;
+  height: 0.875rem;
+}

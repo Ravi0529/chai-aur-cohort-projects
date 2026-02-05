@@ -1,0 +1,23 @@
+.try-cursor-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 1.25rem;
+  padding: 8.75rem;
+}
+
+.try-cursor-section h2 {
+  font-size: 4.5rem;
+  font-weight: 300;
+}
+
+.try-cursor-section button {
+}
+
+.try-cursor-section .download-icon {
+  transform: translateY(0.0625rem);
+  width: 0.875rem;
+  height: 0.875rem;
+}

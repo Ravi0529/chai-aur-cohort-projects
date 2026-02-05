@@ -1,0 +1,44 @@
+.frontier-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 81.25rem;
+}
+
+.frontier-section h2 {
+  font-size: 1.625rem;
+  font-weight: 100;
+}
+
+.frontier-section .card-container {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.frontier-section .card-container .card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: var(--color-surface-1);
+  border: 0.0625rem solid var(--color-border);
+  border-radius: 0.25rem;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.frontier-section .card-container .card .description-wrapper h3 {
+  font-size: 1rem;
+  font-weight: 100;
+}
+
+.frontier-section .card-container .card .description-wrapper .description {
+  color: var(--color-text-muted);
+}
+
+.frontier-section .card-container .card img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 0.25rem;
+}

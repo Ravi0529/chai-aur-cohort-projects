@@ -1,0 +1,54 @@
+.recent-highlight-section {
+  width: 100%;
+  background-color: var(--color-surface-1);
+  display: flex;
+  justify-content: center;
+}
+
+.recent-highlight-section .content-wrapper {
+  width: 100%;
+  max-width: 81.25rem;
+  display: flex;
+  gap: 12.5rem;
+  padding: 2rem 1rem;
+}
+
+.recent-highlight-section .content-wrapper h2 {
+  font-size: 1rem;
+  font-weight: 100;
+}
+
+.recent-highlight-section .content-wrapper .card-container-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.recent-highlight-section .content-wrapper .card-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.recent-highlight-section .card-container .card {
+  width: 40.625rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  background-color: var(--color-surface-2);
+  border: 0.0625rem solid var(--color-border);
+  border-radius: 0.25rem;
+  padding: 1rem 0.875rem;
+}
+
+.recent-highlight-section .card-container .card:hover {
+  filter: brightness(1.1);
+}
+
+.recent-highlight-section .card-container .card .description {
+  color: var(--color-text-muted);
+}
+
+.recent-highlight-section .card-container .card .date {
+  color: var(--color-text-muted);
+}
