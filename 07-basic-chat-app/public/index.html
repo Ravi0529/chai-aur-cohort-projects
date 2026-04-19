@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat App — Enter Name</title>
+    <link rel="stylesheet" href="/style.css">
+    <meta name="robots" content="noindex">
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: system-ui, Segoe UI, Roboto, Arial
+        }
+
+        .box {
+            width: 320px;
+            padding: 24px;
+            border-radius: 8px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, .08);
+            background: #fff
+        }
+
+        input {
+            width: 100%;
+            padding: 10px 12px;
+            margin-top: 8px;
+            font-size: 16px
+        }
+
+        button {
+            margin-top: 12px;
+            width: 100%;
+            padding: 10px;
+            font-size: 16px
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <h2>Join Chat (anonymous)</h2>
+        <label for="name">Your display name</label>
+        <input id="name" placeholder="e.g. cool_cat" maxlength="32" />
+        <button id="join">Join Chat</button>
+        <p style="font-size:13px;color:#666;margin-top:10px">Your name is stored only in your browser.</p>
+    </div>
+
+    <script>
+        const input = document.getElementById('name');
+        const btn = document.getElementById('join');
+        const saved = localStorage.getItem('anonName');
+        if (saved) input.value = saved;
+
+        btn.addEventListener('click', () => {
+            const name = input.value.trim() || 'Anon';
+            localStorage.setItem('anonName', name);
+            window.location.href = 'chat.html';
+        });
+
+        input.addEventListener('keydown', (e) => { if (e.key === 'Enter') btn.click(); });
+    </script>
+</body>
+
+</html>

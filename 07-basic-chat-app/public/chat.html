@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Chat</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <div class="chat-root">
+        <header class="chat-header">
+            <div class="title">Simple Chat</div>
+            <div id="user-name" class="user-name"></div>
+        </header>
+
+        <main class="messages" id="messages"></main>
+
+        <form id="msgForm" class="msg-form">
+            <input id="msgInput" autocomplete="off" placeholder="Type a message" />
+            <button type="submit">Send</button>
+        </form>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const name = localStorage.getItem('anonName') || '';
+        if (!name) { location.href = 'index.html'; }
+
+        const userNameEl = document.getElementById('user-name');
+        userNameEl.textContent = name;
+
+        const socket = io();
+        socket.emit('join', name);
+
+        const messagesEl = document.getElementById('messages');
+        const form = document.getElementById('msgForm');
+        const input = document.getElementById('msgInput');
+
+        const saved = JSON.parse(localStorage.getItem('messages') || '[]');
+        saved.forEach(appendMessage);
+
+        socket.on('message', (msg) => {
+            const arr = JSON.parse(localStorage.getItem('messages') || '[]');
+            arr.push(msg);
+            try { localStorage.setItem('messages', JSON.stringify(arr)); } catch (e) { }
+            appendMessage(msg);
+        });
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const text = input.value.trim();
+            if (!text) return;
+            const msg = { name, text, ts: Date.now() };
+            const arr = JSON.parse(localStorage.getItem('messages') || '[]');
+            arr.push(msg);
+            try { localStorage.setItem('messages', JSON.stringify(arr)); } catch (e) { }
+            appendMessage(msg, true);
+            socket.emit('message', msg);
+            input.value = '';
+            input.focus();
+        });
+
+        function appendMessage(msg, self) {
+            const el = document.createElement('div');
+            el.className = 'msg' + (msg.name === name ? ' me' : '');
+            const time = new Date(msg.ts).toLocaleTimeString();
+            el.innerHTML = `<div class="meta"><span class="who">${escapeHtml(msg.name)}</span><span class="time">${time}</span></div><div class="text">${escapeHtml(msg.text)}</div>`;
+            messagesEl.appendChild(el);
+            messagesEl.scrollTop = messagesEl.scrollHeight;
+        }
+
+        function escapeHtml(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+    </script>
+</body>
+
+</html>
